@@ -11,16 +11,18 @@ const Header = () => {
             <Navbar.Brand href="#home">Shop.IO</Navbar.Brand>
           </Link>
           <Nav className="ml-auto">
-            <Link to="/cart">
+            
               <Nav.Link>
-                <i className="fas fa-shopping-cart"></i> Cart
+                <Link style={{color:"white"}} to="/cart">
+                  <i className="fas fa-shopping-cart"></i> Cart
+                </Link>
               </Nav.Link>
-            </Link>
-            <Link to="/login">
-              <Nav.Link>
+            
+            <Nav.Link>
+              <Link style={{color:"white"}} to="/login">  
                 <i className="fas fa-user"> </i> Login
-              </Nav.Link>
-            </Link>
+              </Link>
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
