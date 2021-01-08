@@ -21,7 +21,7 @@ const CartScreen = ({ match, location }) => {
   const { cartItems } = cart;
   useEffect(() => {
     if (match.params.id) {
-      dispatch(cartAction(match.params.id, 3));
+      dispatch(cartAction(match.params.id, qty));
       console.log(cartItems);
     }
   }, []);
@@ -41,17 +41,15 @@ const CartScreen = ({ match, location }) => {
               <Link to={`/product/${item.product}`}>
                 <h4>{item.name}</h4>
               </Link>
-              <p>
-                <strong>Quantity: {item.qty}</strong>
-              </p>
-              <p>
-                <strong>Price: {(item.price * item.qty).toFixed(2)} </strong>
-              </p>
-              <Button onClick={()=> itemDeleteHandler(item.product)} variant="dark">Delete From Cart</Button>
-            </Col>
-            <Col md={2}>
-              <Form.Control
+              
+                <Row>
+                    <Col>
+                        <strong>Quantity: </strong>
+                    </Col>
+                    <Col>
+                    <Form.Control
                 as="select"
+              
                 value={item.qty}
                 onChange={(e) =>
                   dispatch(cartAction(item.product, e.target.value))
@@ -65,6 +63,18 @@ const CartScreen = ({ match, location }) => {
                   );
                 })}
               </Form.Control>
+                    </Col>
+                </Row>
+                
+                
+              
+              <p>
+                <strong>Price: {(item.price * item.qty).toFixed(2)} </strong>
+              </p>
+              <Button onClick={()=> itemDeleteHandler(item.product)} variant="dark">Delete From Cart</Button>
+            </Col>
+            <Col md={2}>
+              
             </Col>
             <Col>
               {item.countInStock <= 5 ? (
