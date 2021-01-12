@@ -1,3 +1,11 @@
 main{
   min-height: 80vh;
 }
+
+.navLink{
+  margin: 5px;
+}
+
+.navLink:hover{
+  text-decoration: none;
+}
