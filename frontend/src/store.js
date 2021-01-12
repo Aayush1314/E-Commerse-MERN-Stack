@@ -8,7 +8,9 @@ import {loginReducer} from './reducers/authReducers'
 
 const reducers = combineReducers({user: loginReducer, productList: productReducer, oneProduct: singleProductReducer, cart: cartReducer})
 const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem("cartItems")) : []
-const initState = {cart: {cartItems: cartItemsFromStorage}}
+const usersFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem("userInfo")) : {}
+
+const initState = {cart: {cartItems: cartItemsFromStorage}  , user:{currUser: usersFromStorage} }
 const middleware = [thunk]
 const store = createStore(reducers, initState, composeWithDevTools(applyMiddleware(...middleware)))
 

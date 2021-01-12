@@ -15,6 +15,8 @@ export const loginAction = ( email,password )=> async (dispatch) => {
             type: "LOGIN_SUCCESS",
             payload: data
         })
+
+        localStorage.setItem("userInfo", JSON.stringify(data))
         
     } catch (error) {
         dispatch({
@@ -32,5 +34,6 @@ export const logoutAction = ()=> async (dispatch) => {
     dispatch({
         type: "LOGOUT"
     })
+    localStorage.setItem("userInfo", '')
 
 }
